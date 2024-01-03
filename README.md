@@ -1,6 +1,6 @@
 # todo_app_v2
 
-A TO-DO application with internal storage for long term todo plan.
+This Flutter app is a todo app with an internal storage feature. It allows users to create and manage their tasks in a convenient and organized manner. With the internal storage feature, users can save their tasks directly within the app, ensuring that their todo list is always accessible even if they close the app or restart their device. This feature provides a seamless user experience and eliminates the need for external storage or reliance on an internet connection. With this app, users can stay organized and keep track of their tasks efficiently.
 
 ## Getting Started
 
