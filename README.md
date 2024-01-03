@@ -1,6 +1,6 @@
 # todo_app_v2
 
-A new Flutter project.
+A TO-DO application with internal storage for long term todo plan.
 
 ## Getting Started
 
