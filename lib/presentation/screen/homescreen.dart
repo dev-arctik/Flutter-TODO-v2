@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_v2/presentation/widget/addtodotextfield.dart';
+import 'package:todo_app_v2/presentation/widget/todotile.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -7,8 +9,21 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ToDo App"),
+        title: const Text("ToDo App"),
         centerTitle: true,
+      ),
+      body: const Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            children: [
+              TodoTile(),
+              TodoTile(),
+            ],
+          ),
+          AddTodoTextField()
+        ],
       ),
     );
   }
