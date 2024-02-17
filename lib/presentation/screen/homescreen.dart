@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:todo_app_v2/presentation/widget/addtodotextfield.dart';
 import 'package:todo_app_v2/presentation/widget/todotile.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
