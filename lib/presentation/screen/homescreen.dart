@@ -2,27 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:todo_app_v2/presentation/widget/addtodotextfield.dart';
 import 'package:todo_app_v2/presentation/widget/todotile.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // List to store TO-DO tasks
+    List<String> todoItems = ["Task 1", "Task 2"];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("ToDo App"),
         centerTitle: true,
       ),
-      body: const Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            children: [
-              TodoTile(),
-              TodoTile(),
-            ],
+          Expanded(
+            child: ListView.builder(
+              itemCount: todoItems.length,
+              itemBuilder: (context, index) {
+                return TodoTile(
+                  task: todoItems[index],
+                );
+              },
+            ),
           ),
-          AddTodoTextField()
+          const AddTodoTextField()
         ],
       ),
     );

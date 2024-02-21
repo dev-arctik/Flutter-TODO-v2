@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TodoTile extends StatefulWidget {
-  const TodoTile({super.key});
+  final String task;
+
+  const TodoTile({super.key, required this.task});
 
   @override
   State<TodoTile> createState() => _TodoTileState();
@@ -32,7 +34,7 @@ class _TodoTileState extends State<TodoTile> {
                   },
                 ),
                 Text(
-                  "This is Demo",
+                  widget.task,
                   style: TextStyle(
                       decoration: isCompleted
                           ? TextDecoration.lineThrough
