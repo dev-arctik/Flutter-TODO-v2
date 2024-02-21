@@ -2,14 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:todo_app_v2/presentation/widget/addtodotextfield.dart';
 import 'package:todo_app_v2/presentation/widget/todotile.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // List to store TO-DO tasks
-    List<String> todoItems = ["Task 1", "Task 2"];
+  State<MyHomePage> createState() => _MyHomePageState();
+}
 
+class _MyHomePageState extends State<MyHomePage> {
+  // List to store TO-DO tasks
+  List todoItems = [
+    ["Task1", false],
+    ["Task2", false],
+  ];
+
+  void checkBoxChanged(bool? value, int index) {
+    setState(() {
+      todoItems[index][1] = !todoItems[index][1];
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("ToDo App"),
@@ -24,7 +38,9 @@ class MyHomePage extends StatelessWidget {
               itemCount: todoItems.length,
               itemBuilder: (context, index) {
                 return TodoTile(
-                  task: todoItems[index],
+                  taskName: todoItems[index][0],
+                  taskCompleted: todoItems[index][1],
+                  onChanged: (value) => checkBoxChanged(value, index),
                 );
               },
             ),
