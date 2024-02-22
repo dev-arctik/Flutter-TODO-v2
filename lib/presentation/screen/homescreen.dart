@@ -10,15 +10,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // text editing controller
+  final _taskTextController = TextEditingController();
+
   // List to store TO-DO tasks
   List todoItems = [
     ["Task1", false],
     ["Task2", false],
   ];
 
+  // checkbox tapped complete the task
   void checkBoxChanged(bool? value, int index) {
     setState(() {
       todoItems[index][1] = !todoItems[index][1];
+    });
+  }
+
+  // add new task in the list
+  void addNewTask() {
+    setState(() {
+      todoItems.add([_taskTextController.text, false]);
+      _taskTextController.clear();
     });
   }
 
@@ -45,7 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
           ),
-          const AddTodoTextField()
+          AddTodoTextField(
+            taskTextController: _taskTextController,
+            addTask: addNewTask,
+          )
         ],
       ),
     );
