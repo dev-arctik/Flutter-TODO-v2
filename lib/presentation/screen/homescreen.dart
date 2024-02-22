@@ -28,10 +28,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // add new task in the list
   void addNewTask() {
-    setState(() {
-      todoItems.add([_taskTextController.text, false]);
-      _taskTextController.clear();
-    });
+    if (_taskTextController.text != "") {
+      setState(() {
+        todoItems.add([_taskTextController.text, false]);
+        _taskTextController.clear();
+      });
+    }
   }
 
   @override
