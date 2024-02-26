@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AddTodoTextField extends StatelessWidget {
-  const AddTodoTextField({super.key});
+  final taskTextController;
+  VoidCallback addTask;
+
+  AddTodoTextField(
+      {super.key, required this.taskTextController, required this.addTask});
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +15,7 @@ class AddTodoTextField extends StatelessWidget {
         children: [
           Expanded(
               child: TextField(
+            controller: taskTextController,
             decoration: InputDecoration(
                 hintText: "Add your TODO",
                 border: OutlineInputBorder(
@@ -22,8 +27,8 @@ class AddTodoTextField extends StatelessWidget {
           )),
           const SizedBox(width: 4),
           IconButton.filled(
-            onPressed: () {},
-            icon: Icon(Icons.add),
+            onPressed: addTask,
+            icon: const Icon(Icons.add),
             iconSize: 40,
           )
         ],

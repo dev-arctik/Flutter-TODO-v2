@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
-class TodoTile extends StatefulWidget {
-  const TodoTile({super.key});
+class TodoTile extends StatelessWidget {
+  final String taskName;
+  final bool taskCompleted;
+  Function(bool?)? onChanged;
+  VoidCallback onDelete;
 
-  @override
-  State<TodoTile> createState() => _TodoTileState();
-}
-
-class _TodoTileState extends State<TodoTile> {
-  bool isCompleted = false;
+  TodoTile(
+      {super.key,
+      required this.taskName,
+      required this.taskCompleted,
+      required this.onChanged,
+      required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -23,25 +26,18 @@ class _TodoTileState extends State<TodoTile> {
           children: [
             Row(
               children: [
-                Checkbox(
-                  value: isCompleted,
-                  onChanged: (value) {
-                    setState(() {
-                      isCompleted = value!;
-                    });
-                  },
-                ),
+                Checkbox(value: taskCompleted, onChanged: onChanged),
                 Text(
-                  "This is Demo",
+                  taskName,
                   style: TextStyle(
-                      decoration: isCompleted
+                      decoration: taskCompleted
                           ? TextDecoration.lineThrough
                           : TextDecoration.none),
                 )
               ],
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: onDelete,
               icon: const Icon(Icons.delete_outline_rounded),
             )
           ],
